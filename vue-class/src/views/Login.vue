@@ -24,6 +24,7 @@
 
          
          
+          <!-- <mt-button @click="loginAction">登录App</mt-button> -->
           <mt-button @click.native="loginAction">登录App</mt-button>
 
 
@@ -78,10 +79,12 @@ export default {
         });
         return;
       }
+
       let data = {
         username: this.username,
         password: this.password
       };
+
       this.$store.dispatch("setLoadingState", true); //设置loading状态
 
       requestLogin(data).then(res => {
@@ -110,6 +113,7 @@ export default {
         height: 1.2rem;
         background-color: #f7f9fc;
         line-height: 1.2rem;
+        
 
         .back {
             font-size: 0.8rem;
@@ -126,6 +130,7 @@ export default {
     .login {
         width: 8rem;
         margin: 0 auto;
+        margin-top: 100px;
 
         .username, .password {
             margin: 0.3rem;
