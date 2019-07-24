@@ -7,23 +7,21 @@
 
 
       <div class="login">
+
           <!-- <div class="username">
               <label>账号:</label>
               <input type="text" v-model="username" placeholder="测试账号admin">
           </div>
+
           <div class="password">
               <label>密码:</label>
               <input type="password" v-model="password" placeholder="测试密码123456">
           </div> -->
 
-
-          <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
-          <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
+          <mt-field id="" class="" style="" label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+          <mt-field id="" class="" style="" label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
 
           <!-- <button @click="login">登录</button> -->
-
-         
-         
           <!-- <mt-button @click="loginAction">登录App</mt-button> -->
           <mt-button @click.native="loginAction">登录App</mt-button>
 

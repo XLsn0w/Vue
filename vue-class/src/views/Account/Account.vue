@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="user">
+
       <div v-if="user.name">
         <img :src="user.src" alt="" class="avatar"/>
         <div class="description">
@@ -8,6 +9,7 @@
           <span class="ways">{{user.ways}}</span>
         </div>
       </div>
+
       <div class="login" v-if="!user.name">
         <div class="wrap">
           <div class="button" @click="changeToLogin">登录</div>
@@ -21,6 +23,7 @@
         </mt-cell>
       </li>
       </ul>
+
     </div>
 
     <ul class="nav">
@@ -36,12 +39,12 @@
             <i slot="icon" class="icon iconfont icon-yuesel" ></i>
          </mt-cell>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
          <mt-cell title="我的订单" icon="more"  is-link>
            <i slot="icon" class="icon iconfont icon-dingdan" ></i>
          </mt-cell>
 
-      </li> -->
+      </li>
       <li class="nav-item">
           <mt-cell title="我的优惠券" icon="more"  is-link>
              <i slot="icon" class="icon iconfont icon-youhuiquan" ></i>
@@ -54,7 +57,7 @@
       </li>
     </ul>
     <ul class="nav">
-      <li class="nav-item">
+      <li class="nav-item" @click="safeUpdate">
          <mt-cell title="手机账号绑定" icon="more" value="安全升级" is-link>
             <i slot="icon" class="icon iconfont icon-weibiaoti2fuzhi11" ></i>
          </mt-cell>
@@ -68,22 +71,21 @@
         
       </li>
     </ul>
+    
     <ul class="nav">
+
       <li class="nav-item">
          <mt-cell title="帮助与反馈"   is-link>
            <i slot="icon" class="icon iconfont icon-icon_help" ></i>
          </mt-cell>
       </li>
+
       <li class="nav-item">
          <mt-cell title="给我们建议"   is-link>
             <i slot="icon" class="icon iconfont icon-haoping" ></i> 
          </mt-cell>
       </li>
-      <li class="nav-item">
-         <mt-cell title="给我们建议"   is-link>
-            <i slot="icon" class="icon iconfont icon-haoping" ></i> 
-         </mt-cell>
-      </li>
+     
     </ul>
   
   </div>
@@ -91,6 +93,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import { Toast } from 'mint-ui';
+
 export default {
   data(){
     return{
@@ -114,6 +118,13 @@ export default {
     },
     changeToLogin(){            //跳转到登录界面
       this.$router.push('/account/login');
+    },
+    safeUpdate() {
+      Toast({
+                message: '请填写完整',
+                iconClass: 'icon icon-error',
+                position: 'top',
+        });
     }
   },
   computed:{
@@ -125,6 +136,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
 .wrapper
   background-color  #f2f4f7
   width 100%
