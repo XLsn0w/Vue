@@ -9,6 +9,8 @@ import 'mint-ui/lib/style.css'
 import '@/common/stylus/index.styl'
 import '@/common/font/iconfont.css'
 import 'lib-flexible'
+import axios from '../node_modules/axios' ///导入 axios 
+
 Vue.use(MintUI)
 Vue.config.productionTip = false
 
@@ -28,10 +30,13 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+Vue.prototype.$axios = axios; ///new Vue()中配置
+
 new Vue({
   el: '#app',
   router,
+  store,
+  axios,
   components: { App },
-  template: '<App/>',
-  store
+  template: '<App/>'
 })
