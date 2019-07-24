@@ -14,6 +14,8 @@ import axios from '../node_modules/axios' ///导入 axios
 Vue.use(MintUI)
 Vue.config.productionTip = false
 
+let xlsn0w = 'xlsn0w'
+
 /* eslint-disable no-new */
 router.beforeEach((to, from, next) => {
   // NProgress.start();
@@ -28,6 +30,7 @@ router.beforeEach((to, from, next) => {
   //   next()
   // }                                   //默认可选择暂时不登录
   next()
+  console.log(this.xlsn0w)
 })
 
 Vue.prototype.$axios = axios; ///new Vue()中配置

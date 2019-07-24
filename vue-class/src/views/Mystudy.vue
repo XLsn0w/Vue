@@ -36,8 +36,10 @@
 </template>
 
 <script>
+
 import {mapGetters} from 'vuex'
 import { getAllclass } from "@/api/api";
+
 export default {
   data(){
     return{

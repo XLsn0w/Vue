@@ -25,8 +25,10 @@
 </template>
 
 <script>
+
 import search from "@/components/search"
-import { getClassify } from "@/api/api"
+import {getClassify} from "@/api/api"
+
 export default {
   data() {
     return {
