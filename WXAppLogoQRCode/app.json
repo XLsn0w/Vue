@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/logoQRCode/logoQRCode"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "微信小程序-绘制二维码-添加中间Logo",
+    "navigationBarTextStyle": "black"
+  }
+}

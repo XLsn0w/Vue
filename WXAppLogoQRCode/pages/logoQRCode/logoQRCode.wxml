@@ -1,0 +1,6 @@
+
+<view class="container-box">
+    <view class="logoQRCode">
+      <canvas style="width: 550rpx;height: 550rpx;background:#f1f1f1;" canvas-id="logoQRCode" />
+    </view>
+</view>

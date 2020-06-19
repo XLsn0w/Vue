@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: golong
+Build-Jdk: 9.0.1
+Implementation-Title: golongbus
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: com.golong.bus
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/golongbus-pa
+ y/
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.golong.bus.mapper.Tj_CodeScanbyBusMapper">
+  <resultMap id="BaseResultMap" type="com.golong.bus.model.Tj_CodeScanbyBus">
+    <id column="FLD_TRADE_NO" jdbcType="VARCHAR" property="fldTradeNo" />
+    <result column="FLD_BUSID" jdbcType="VARCHAR" property="fldBusid" />
+    <result column="FLD_BUSLINE" jdbcType="VARCHAR" property="fldBusline" />
+    <result column="FLD_POSID" jdbcType="VARCHAR" property="fldPosid" />
+    <result column="FLD_CITY_CODE" jdbcType="VARCHAR" property="fldCityCode" />
+    <result column="FLD_DRIVERID" jdbcType="VARCHAR" property="fldDriverid" />
+    <result column="FLD_TRADE_TIME" jdbcType="TIMESTAMP" property="fldTradeTime" />
+    <result column="FLD_USER_NO" jdbcType="VARCHAR" property="fldUserNo" />
+    <result column="FLD_PRICE" jdbcType="INTEGER" property="fldPrice" />
+    <result column="FLD_AMOUNT" jdbcType="INTEGER" property="fldAmount" />
+    <result column="FLD_BALANCE" jdbcType="INTEGER" property="fldBalance" />
+    <result column="FLD_CONSUMPTION_TYPE" jdbcType="INTEGER" property="fldConsumptionType" />
+    <result column="FLD_LON" jdbcType="VARCHAR" property="fldLon" />
+    <result column="FLD_LAT" jdbcType="VARCHAR" property="fldLat" />
+    <result column="FLD_COMPANY_ID" jdbcType="VARCHAR" property="fldCompanyId" />
+    <result column="FLD_PUNCH_TIME" jdbcType="TIMESTAMP" property="fldPunchTime" />
+    <result column="FLD_TRADE_INDEX" jdbcType="INTEGER" property="fldTradeIndex" />
+    <result column="FLD_TRADE_TYPE" jdbcType="INTEGER" property="fldTradeType" />
+    <result column="FLD_PROTYPE" jdbcType="VARCHAR" property="fldProtype" />
+    <result column="FLD_UNITID" jdbcType="VARCHAR" property="fldUnitid" />
+    <result column="FLD_BRANCHID" jdbcType="VARCHAR" property="fldBranchid" />
+    <result column="FLD_ARRAYID" jdbcType="VARCHAR" property="fldArrayid" />
+    <result column="FLD_STATIONID1" jdbcType="VARCHAR" property="fldStationid1" />
+    <result column="FLD_STATIONID2" jdbcType="VARCHAR" property="fldStationid2" />
+    <result column="FLD_MAC" jdbcType="VARCHAR" property="fldMac" />
+    <result column="FLD_TAC" jdbcType="VARCHAR" property="fldTac" />
+    <result column="FLD_TRADE_SQUE" jdbcType="VARCHAR" property="fldTradeSque" />
+    <result column="FLD_MEMO" jdbcType="VARCHAR" property="fldMemo" />
+    <result column="FLD_STATE" jdbcType="INTEGER" property="fldState" />
+    <result column="FLD_SERVER_ID" jdbcType="VARCHAR" property="fldServerId" />
+    <result column="FLD_RESULT_TIME" jdbcType="TIMESTAMP" property="fldResultTime" />
+    <result column="FLD_UPLOAD_TIME" jdbcType="TIMESTAMP" property="fldUploadTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.golong.bus.model.Tj_CodeScanbyBusWithBLOBs">
+    <result column="FLD_QR_COMTENT" jdbcType="LONGVARCHAR" property="fldQrComtent" />
+    <result column="FLD_QR_COMTENT2" jdbcType="LONGVARCHAR" property="fldQrComtent2" />
+    <result column="FLD_MESSAGE" jdbcType="LONGVARBINARY" property="fldMessage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FLD_TRADE_NO, FLD_BUSID, FLD_BUSLINE, FLD_POSID, FLD_CITY_CODE, FLD_DRIVERID, FLD_TRADE_TIME, 
+    FLD_USER_NO, FLD_PRICE, FLD_AMOUNT, FLD_BALANCE, FLD_CONSUMPTION_TYPE, FLD_LON, FLD_LAT, 
+    FLD_COMPANY_ID, FLD_PUNCH_TIME, FLD_TRADE_INDEX, FLD_TRADE_TYPE, FLD_PROTYPE, FLD_UNITID, 
+    FLD_BRANCHID, FLD_ARRAYID, FLD_STATIONID1, FLD_STATIONID2, FLD_MAC, FLD_TAC, FLD_TRADE_SQUE, 
+    FLD_MEMO, FLD_STATE, FLD_SERVER_ID, FLD_RESULT_TIME, FLD_UPLOAD_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    FLD_QR_COMTENT, FLD_QR_COMTENT2, FLD_MESSAGE
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.golong.bus.model.Tj_CodeScanbyBusExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_tj_code_scanbybus_201710
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.golong.bus.model.Tj_CodeScanbyBusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_tj_code_scanbybus_201710
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_tj_code_scanbybus_201710
+    where FLD_TRADE_NO = #{fldTradeNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_tj_code_scanbybus_201710
+    where FLD_TRADE_NO = #{fldTradeNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.golong.bus.model.Tj_CodeScanbyBusExample">
+    delete from tb_tj_code_scanbybus_201710
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.golong.bus.model.Tj_CodeScanbyBusWithBLOBs">
+    <selectKey keyProperty="fldTradeNo" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_tj_code_scanbybus_201710 (FLD_BUSID, FLD_BUSLINE, FLD_POSID, 
+      FLD_CITY_CODE, FLD_DRIVERID, FLD_TRADE_TIME, 
+      FLD_USER_NO, FLD_PRICE, FLD_AMOUNT, 
+      FLD_BALANCE, FLD_CONSUMPTION_TYPE, FLD_LON, 
+      FLD_LAT, FLD_COMPANY_ID, FLD_PUNCH_TIME, 
+      FLD_TRADE_INDEX, FLD_TRADE_TYPE, FLD_PROTYPE, 
+      FLD_UNITID, FLD_BRANCHID, FLD_ARRAYID, 
+      FLD_STATIONID1, FLD_STATIONID2, FLD_MAC, 
+      FLD_TAC, FLD_TRADE_SQUE, FLD_MEMO, 
+      FLD_STATE, FLD_SERVER_ID, FLD_RESULT_TIME, 
+      FLD_UPLOAD_TIME, FLD_QR_COMTENT, FLD_QR_COMTENT2, 
+      FLD_MESSAGE)
+    values (#{fldBusid,jdbcType=VARCHAR}, #{fldBusline,jdbcType=VARCHAR}, #{fldPosid,jdbcType=VARCHAR}, 
+      #{fldCityCode,jdbcType=VARCHAR}, #{fldDriverid,jdbcType=VARCHAR}, #{fldTradeTime,jdbcType=TIMESTAMP}, 
+      #{fldUserNo,jdbcType=VARCHAR}, #{fldPrice,jdbcType=INTEGER}, #{fldAmount,jdbcType=INTEGER}, 
+      #{fldBalance,jdbcType=INTEGER}, #{fldConsumptionType,jdbcType=INTEGER}, #{fldLon,jdbcType=VARCHAR}, 
+      #{fldLat,jdbcType=VARCHAR}, #{fldCompanyId,jdbcType=VARCHAR}, #{fldPunchTime,jdbcType=TIMESTAMP}, 
+      #{fldTradeIndex,jdbcType=INTEGER}, #{fldTradeType,jdbcType=INTEGER}, #{fldProtype,jdbcType=VARCHAR}, 
+      #{fldUnitid,jdbcType=VARCHAR}, #{fldBranchid,jdbcType=VARCHAR}, #{fldArrayid,jdbcType=VARCHAR}, 
+      #{fldStationid1,jdbcType=VARCHAR}, #{fldStationid2,jdbcType=VARCHAR}, #{fldMac,jdbcType=VARCHAR}, 
+      #{fldTac,jdbcType=VARCHAR}, #{fldTradeSque,jdbcType=VARCHAR}, #{fldMemo,jdbcType=VARCHAR}, 
+      #{fldState,jdbcType=INTEGER}, #{fldServerId,jdbcType=VARCHAR}, #{fldResultTime,jdbcType=TIMESTAMP}, 
+      #{fldUploadTime,jdbcType=TIMESTAMP}, #{fldQrComtent,jdbcType=LONGVARCHAR}, #{fldQrComtent2,jdbcType=LONGVARCHAR}, 
+      #{fldMessage,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.golong.bus.model.Tj_CodeScanbyBusWithBLOBs">
+    <selectKey keyProperty="fldTradeNo" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_tj_code_scanbybus_201710
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fldBusid != null">
+        FLD_BUSID,
+      </if>
+      <if test="fldBusline != null">
+        FLD_BUSLINE,
+      </if>
+      <if test="fldPosid != null">
+        FLD_POSID,
+      </if>
+      <if test="fldCityCode != null">
+        FLD_CITY_CODE,
+      </if>
+      <if test="fldDriverid != null">
+        FLD_DRIVERID,
+      </if>
+      <if test="fldTradeTime != null">
+        FLD_TRADE_TIME,
+      </if>
+      <if test="fldUserNo != null">
+        FLD_USER_NO,
+      </if>
+      <if test="fldPrice != null">
+        FLD_PRICE,
+      </if>
+      <if test="fldAmount != null">
+        FLD_AMOUNT,
+      </if>
+      <if test="fldBalance != null">
+        FLD_BALANCE,
+      </if>
+      <if test="fldConsumptionType != null">
+        FLD_CONSUMPTION_TYPE,
+      </if>
+      <if test="fldLon != null">
+        FLD_LON,
+      </if>
+      <if test="fldLat != null">
+        FLD_LAT,
+      </if>
+      <if test="fldCompanyId != null">
+        FLD_COMPANY_ID,
+      </if>
+      <if test="fldPunchTime != null">
+        FLD_PUNCH_TIME,
+      </if>
+      <if test="fldTradeIndex != null">
+        FLD_TRADE_INDEX,
+      </if>
+      <if test="fldTradeType != null">
+        FLD_TRADE_TYPE,
+      </if>
+      <if test="fldProtype != null">
+        FLD_PROTYPE,
+      </if>
+      <if test="fldUnitid != null">
+        FLD_UNITID,
+      </if>
+      <if test="fldBranchid != null">
+        FLD_BRANCHID,
+      </if>
+      <if test="fldArrayid != null">
+        FLD_ARRAYID,
+      </if>
+      <if test="fldStationid1 != null">
+        FLD_STATIONID1,
+      </if>
+      <if test="fldStationid2 != null">
+        FLD_STATIONID2,
+      </if>
+      <if test="fldMac != null">
+        FLD_MAC,
+      </if>
+      <if test="fldTac != null">
+        FLD_TAC,
+      </if>
+      <if test="fldTradeSque != null">
+        FLD_TRADE_SQUE,
+      </if>
+      <if test="fldMemo != null">
+        FLD_MEMO,
+      </if>
+      <if test="fldState != null">
+        FLD_STATE,
+      </if>
+      <if test="fldServerId != null">
+        FLD_SERVER_ID,
+      </if>
+      <if test="fldResultTime != null">
+        FLD_RESULT_TIME,
+      </if>
+      <if test="fldUploadTime != null">
+        FLD_UPLOAD_TIME,
+      </if>
+      <if test="fldQrComtent != null">
+        FLD_QR_COMTENT,
+      </if>
+      <if test="fldQrComtent2 != null">
+        FLD_QR_COMTENT2,
+      </if>
+      <if test="fldMessage != null">
+        FLD_MESSAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fldBusid != null">
+        #{fldBusid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldBusline != null">
+        #{fldBusline,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPosid != null">
+        #{fldPosid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldCityCode != null">
+        #{fldCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fldDriverid != null">
+        #{fldDriverid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTradeTime != null">
+        #{fldTradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldUserNo != null">
+        #{fldUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPrice != null">
+        #{fldPrice,jdbcType=INTEGER},
+      </if>
+      <if test="fldAmount != null">
+        #{fldAmount,jdbcType=INTEGER},
+      </if>
+      <if test="fldBalance != null">
+        #{fldBalance,jdbcType=INTEGER},
+      </if>
+      <if test="fldConsumptionType != null">
+        #{fldConsumptionType,jdbcType=INTEGER},
+      </if>
+      <if test="fldLon != null">
+        #{fldLon,jdbcType=VARCHAR},
+      </if>
+      <if test="fldLat != null">
+        #{fldLat,jdbcType=VARCHAR},
+      </if>
+      <if test="fldCompanyId != null">
+        #{fldCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPunchTime != null">
+        #{fldPunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldTradeIndex != null">
+        #{fldTradeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="fldTradeType != null">
+        #{fldTradeType,jdbcType=INTEGER},
+      </if>
+      <if test="fldProtype != null">
+        #{fldProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="fldUnitid != null">
+        #{fldUnitid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldBranchid != null">
+        #{fldBranchid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldArrayid != null">
+        #{fldArrayid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldStationid1 != null">
+        #{fldStationid1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldStationid2 != null">
+        #{fldStationid2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldMac != null">
+        #{fldMac,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTac != null">
+        #{fldTac,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTradeSque != null">
+        #{fldTradeSque,jdbcType=VARCHAR},
+      </if>
+      <if test="fldMemo != null">
+        #{fldMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fldState != null">
+        #{fldState,jdbcType=INTEGER},
+      </if>
+      <if test="fldServerId != null">
+        #{fldServerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fldResultTime != null">
+        #{fldResultTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldUploadTime != null">
+        #{fldUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldQrComtent != null">
+        #{fldQrComtent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fldQrComtent2 != null">
+        #{fldQrComtent2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fldMessage != null">
+        #{fldMessage,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.golong.bus.model.Tj_CodeScanbyBusExample" resultType="java.lang.Long">
+    select count(*) from tb_tj_code_scanbybus_201710
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_tj_code_scanbybus_201710
+    <set>
+      <if test="record.fldTradeNo != null">
+        FLD_TRADE_NO = #{record.fldTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldBusid != null">
+        FLD_BUSID = #{record.fldBusid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldBusline != null">
+        FLD_BUSLINE = #{record.fldBusline,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldPosid != null">
+        FLD_POSID = #{record.fldPosid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldCityCode != null">
+        FLD_CITY_CODE = #{record.fldCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldDriverid != null">
+        FLD_DRIVERID = #{record.fldDriverid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldTradeTime != null">
+        FLD_TRADE_TIME = #{record.fldTradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fldUserNo != null">
+        FLD_USER_NO = #{record.fldUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldPrice != null">
+        FLD_PRICE = #{record.fldPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldAmount != null">
+        FLD_AMOUNT = #{record.fldAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldBalance != null">
+        FLD_BALANCE = #{record.fldBalance,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldConsumptionType != null">
+        FLD_CONSUMPTION_TYPE = #{record.fldConsumptionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldLon != null">
+        FLD_LON = #{record.fldLon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldLat != null">
+        FLD_LAT = #{record.fldLat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldCompanyId != null">
+        FLD_COMPANY_ID = #{record.fldCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldPunchTime != null">
+        FLD_PUNCH_TIME = #{record.fldPunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fldTradeIndex != null">
+        FLD_TRADE_INDEX = #{record.fldTradeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldTradeType != null">
+        FLD_TRADE_TYPE = #{record.fldTradeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldProtype != null">
+        FLD_PROTYPE = #{record.fldProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldUnitid != null">
+        FLD_UNITID = #{record.fldUnitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldBranchid != null">
+        FLD_BRANCHID = #{record.fldBranchid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldArrayid != null">
+        FLD_ARRAYID = #{record.fldArrayid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldStationid1 != null">
+        FLD_STATIONID1 = #{record.fldStationid1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldStationid2 != null">
+        FLD_STATIONID2 = #{record.fldStationid2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldMac != null">
+        FLD_MAC = #{record.fldMac,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldTac != null">
+        FLD_TAC = #{record.fldTac,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldTradeSque != null">
+        FLD_TRADE_SQUE = #{record.fldTradeSque,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldMemo != null">
+        FLD_MEMO = #{record.fldMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldState != null">
+        FLD_STATE = #{record.fldState,jdbcType=INTEGER},
+      </if>
+      <if test="record.fldServerId != null">
+        FLD_SERVER_ID = #{record.fldServerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fldResultTime != null">
+        FLD_RESULT_TIME = #{record.fldResultTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fldUploadTime != null">
+        FLD_UPLOAD_TIME = #{record.fldUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fldQrComtent != null">
+        FLD_QR_COMTENT = #{record.fldQrComtent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.fldQrComtent2 != null">
+        FLD_QR_COMTENT2 = #{record.fldQrComtent2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.fldMessage != null">
+        FLD_MESSAGE = #{record.fldMessage,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update tb_tj_code_scanbybus_201710
+    set FLD_TRADE_NO = #{record.fldTradeNo,jdbcType=VARCHAR},
+      FLD_BUSID = #{record.fldBusid,jdbcType=VARCHAR},
+      FLD_BUSLINE = #{record.fldBusline,jdbcType=VARCHAR},
+      FLD_POSID = #{record.fldPosid,jdbcType=VARCHAR},
+      FLD_CITY_CODE = #{record.fldCityCode,jdbcType=VARCHAR},
+      FLD_DRIVERID = #{record.fldDriverid,jdbcType=VARCHAR},
+      FLD_TRADE_TIME = #{record.fldTradeTime,jdbcType=TIMESTAMP},
+      FLD_USER_NO = #{record.fldUserNo,jdbcType=VARCHAR},
+      FLD_PRICE = #{record.fldPrice,jdbcType=INTEGER},
+      FLD_AMOUNT = #{record.fldAmount,jdbcType=INTEGER},
+      FLD_BALANCE = #{record.fldBalance,jdbcType=INTEGER},
+      FLD_CONSUMPTION_TYPE = #{record.fldConsumptionType,jdbcType=INTEGER},
+      FLD_LON = #{record.fldLon,jdbcType=VARCHAR},
+      FLD_LAT = #{record.fldLat,jdbcType=VARCHAR},
+      FLD_COMPANY_ID = #{record.fldCompanyId,jdbcType=VARCHAR},
+      FLD_PUNCH_TIME = #{record.fldPunchTime,jdbcType=TIMESTAMP},
+      FLD_TRADE_INDEX = #{record.fldTradeIndex,jdbcType=INTEGER},
+      FLD_TRADE_TYPE = #{record.fldTradeType,jdbcType=INTEGER},
+      FLD_PROTYPE = #{record.fldProtype,jdbcType=VARCHAR},
+      FLD_UNITID = #{record.fldUnitid,jdbcType=VARCHAR},
+      FLD_BRANCHID = #{record.fldBranchid,jdbcType=VARCHAR},
+      FLD_ARRAYID = #{record.fldArrayid,jdbcType=VARCHAR},
+      FLD_STATIONID1 = #{record.fldStationid1,jdbcType=VARCHAR},
+      FLD_STATIONID2 = #{record.fldStationid2,jdbcType=VARCHAR},
+      FLD_MAC = #{record.fldMac,jdbcType=VARCHAR},
+      FLD_TAC = #{record.fldTac,jdbcType=VARCHAR},
+      FLD_TRADE_SQUE = #{record.fldTradeSque,jdbcType=VARCHAR},
+      FLD_MEMO = #{record.fldMemo,jdbcType=VARCHAR},
+      FLD_STATE = #{record.fldState,jdbcType=INTEGER},
+      FLD_SERVER_ID = #{record.fldServerId,jdbcType=VARCHAR},
+      FLD_RESULT_TIME = #{record.fldResultTime,jdbcType=TIMESTAMP},
+      FLD_UPLOAD_TIME = #{record.fldUploadTime,jdbcType=TIMESTAMP},
+      FLD_QR_COMTENT = #{record.fldQrComtent,jdbcType=LONGVARCHAR},
+      FLD_QR_COMTENT2 = #{record.fldQrComtent2,jdbcType=LONGVARCHAR},
+      FLD_MESSAGE = #{record.fldMessage,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_tj_code_scanbybus_201710
+    set FLD_TRADE_NO = #{record.fldTradeNo,jdbcType=VARCHAR},
+      FLD_BUSID = #{record.fldBusid,jdbcType=VARCHAR},
+      FLD_BUSLINE = #{record.fldBusline,jdbcType=VARCHAR},
+      FLD_POSID = #{record.fldPosid,jdbcType=VARCHAR},
+      FLD_CITY_CODE = #{record.fldCityCode,jdbcType=VARCHAR},
+      FLD_DRIVERID = #{record.fldDriverid,jdbcType=VARCHAR},
+      FLD_TRADE_TIME = #{record.fldTradeTime,jdbcType=TIMESTAMP},
+      FLD_USER_NO = #{record.fldUserNo,jdbcType=VARCHAR},
+      FLD_PRICE = #{record.fldPrice,jdbcType=INTEGER},
+      FLD_AMOUNT = #{record.fldAmount,jdbcType=INTEGER},
+      FLD_BALANCE = #{record.fldBalance,jdbcType=INTEGER},
+      FLD_CONSUMPTION_TYPE = #{record.fldConsumptionType,jdbcType=INTEGER},
+      FLD_LON = #{record.fldLon,jdbcType=VARCHAR},
+      FLD_LAT = #{record.fldLat,jdbcType=VARCHAR},
+      FLD_COMPANY_ID = #{record.fldCompanyId,jdbcType=VARCHAR},
+      FLD_PUNCH_TIME = #{record.fldPunchTime,jdbcType=TIMESTAMP},
+      FLD_TRADE_INDEX = #{record.fldTradeIndex,jdbcType=INTEGER},
+      FLD_TRADE_TYPE = #{record.fldTradeType,jdbcType=INTEGER},
+      FLD_PROTYPE = #{record.fldProtype,jdbcType=VARCHAR},
+      FLD_UNITID = #{record.fldUnitid,jdbcType=VARCHAR},
+      FLD_BRANCHID = #{record.fldBranchid,jdbcType=VARCHAR},
+      FLD_ARRAYID = #{record.fldArrayid,jdbcType=VARCHAR},
+      FLD_STATIONID1 = #{record.fldStationid1,jdbcType=VARCHAR},
+      FLD_STATIONID2 = #{record.fldStationid2,jdbcType=VARCHAR},
+      FLD_MAC = #{record.fldMac,jdbcType=VARCHAR},
+      FLD_TAC = #{record.fldTac,jdbcType=VARCHAR},
+      FLD_TRADE_SQUE = #{record.fldTradeSque,jdbcType=VARCHAR},
+      FLD_MEMO = #{record.fldMemo,jdbcType=VARCHAR},
+      FLD_STATE = #{record.fldState,jdbcType=INTEGER},
+      FLD_SERVER_ID = #{record.fldServerId,jdbcType=VARCHAR},
+      FLD_RESULT_TIME = #{record.fldResultTime,jdbcType=TIMESTAMP},
+      FLD_UPLOAD_TIME = #{record.fldUploadTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.golong.bus.model.Tj_CodeScanbyBusWithBLOBs">
+    update tb_tj_code_scanbybus_201710
+    <set>
+      <if test="fldBusid != null">
+        FLD_BUSID = #{fldBusid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldBusline != null">
+        FLD_BUSLINE = #{fldBusline,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPosid != null">
+        FLD_POSID = #{fldPosid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldCityCode != null">
+        FLD_CITY_CODE = #{fldCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fldDriverid != null">
+        FLD_DRIVERID = #{fldDriverid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTradeTime != null">
+        FLD_TRADE_TIME = #{fldTradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldUserNo != null">
+        FLD_USER_NO = #{fldUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPrice != null">
+        FLD_PRICE = #{fldPrice,jdbcType=INTEGER},
+      </if>
+      <if test="fldAmount != null">
+        FLD_AMOUNT = #{fldAmount,jdbcType=INTEGER},
+      </if>
+      <if test="fldBalance != null">
+        FLD_BALANCE = #{fldBalance,jdbcType=INTEGER},
+      </if>
+      <if test="fldConsumptionType != null">
+        FLD_CONSUMPTION_TYPE = #{fldConsumptionType,jdbcType=INTEGER},
+      </if>
+      <if test="fldLon != null">
+        FLD_LON = #{fldLon,jdbcType=VARCHAR},
+      </if>
+      <if test="fldLat != null">
+        FLD_LAT = #{fldLat,jdbcType=VARCHAR},
+      </if>
+      <if test="fldCompanyId != null">
+        FLD_COMPANY_ID = #{fldCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fldPunchTime != null">
+        FLD_PUNCH_TIME = #{fldPunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldTradeIndex != null">
+        FLD_TRADE_INDEX = #{fldTradeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="fldTradeType != null">
+        FLD_TRADE_TYPE = #{fldTradeType,jdbcType=INTEGER},
+      </if>
+      <if test="fldProtype != null">
+        FLD_PROTYPE = #{fldProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="fldUnitid != null">
+        FLD_UNITID = #{fldUnitid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldBranchid != null">
+        FLD_BRANCHID = #{fldBranchid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldArrayid != null">
+        FLD_ARRAYID = #{fldArrayid,jdbcType=VARCHAR},
+      </if>
+      <if test="fldStationid1 != null">
+        FLD_STATIONID1 = #{fldStationid1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldStationid2 != null">
+        FLD_STATIONID2 = #{fldStationid2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldMac != null">
+        FLD_MAC = #{fldMac,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTac != null">
+        FLD_TAC = #{fldTac,jdbcType=VARCHAR},
+      </if>
+      <if test="fldTradeSque != null">
+        FLD_TRADE_SQUE = #{fldTradeSque,jdbcType=VARCHAR},
+      </if>
+      <if test="fldMemo != null">
+        FLD_MEMO = #{fldMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fldState != null">
+        FLD_STATE = #{fldState,jdbcType=INTEGER},
+      </if>
+      <if test="fldServerId != null">
+        FLD_SERVER_ID = #{fldServerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fldResultTime != null">
+        FLD_RESULT_TIME = #{fldResultTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldUploadTime != null">
+        FLD_UPLOAD_TIME = #{fldUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldQrComtent != null">
+        FLD_QR_COMTENT = #{fldQrComtent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fldQrComtent2 != null">
+        FLD_QR_COMTENT2 = #{fldQrComtent2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fldMessage != null">
+        FLD_MESSAGE = #{fldMessage,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where FLD_TRADE_NO = #{fldTradeNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.golong.bus.model.Tj_CodeScanbyBusWithBLOBs">
+    update tb_tj_code_scanbybus_201710
+    set FLD_BUSID = #{fldBusid,jdbcType=VARCHAR},
+      FLD_BUSLINE = #{fldBusline,jdbcType=VARCHAR},
+      FLD_POSID = #{fldPosid,jdbcType=VARCHAR},
+      FLD_CITY_CODE = #{fldCityCode,jdbcType=VARCHAR},
+      FLD_DRIVERID = #{fldDriverid,jdbcType=VARCHAR},
+      FLD_TRADE_TIME = #{fldTradeTime,jdbcType=TIMESTAMP},
+      FLD_USER_NO = #{fldUserNo,jdbcType=VARCHAR},
+      FLD_PRICE = #{fldPrice,jdbcType=INTEGER},
+      FLD_AMOUNT = #{fldAmount,jdbcType=INTEGER},
+      FLD_BALANCE = #{fldBalance,jdbcType=INTEGER},
+      FLD_CONSUMPTION_TYPE = #{fldConsumptionType,jdbcType=INTEGER},
+      FLD_LON = #{fldLon,jdbcType=VARCHAR},
+      FLD_LAT = #{fldLat,jdbcType=VARCHAR},
+      FLD_COMPANY_ID = #{fldCompanyId,jdbcType=VARCHAR},
+      FLD_PUNCH_TIME = #{fldPunchTime,jdbcType=TIMESTAMP},
+      FLD_TRADE_INDEX = #{fldTradeIndex,jdbcType=INTEGER},
+      FLD_TRADE_TYPE = #{fldTradeType,jdbcType=INTEGER},
+      FLD_PROTYPE = #{fldProtype,jdbcType=VARCHAR},
+      FLD_UNITID = #{fldUnitid,jdbcType=VARCHAR},
+      FLD_BRANCHID = #{fldBranchid,jdbcType=VARCHAR},
+      FLD_ARRAYID = #{fldArrayid,jdbcType=VARCHAR},
+      FLD_STATIONID1 = #{fldStationid1,jdbcType=VARCHAR},
+      FLD_STATIONID2 = #{fldStationid2,jdbcType=VARCHAR},
+      FLD_MAC = #{fldMac,jdbcType=VARCHAR},
+      FLD_TAC = #{fldTac,jdbcType=VARCHAR},
+      FLD_TRADE_SQUE = #{fldTradeSque,jdbcType=VARCHAR},
+      FLD_MEMO = #{fldMemo,jdbcType=VARCHAR},
+      FLD_STATE = #{fldState,jdbcType=INTEGER},
+      FLD_SERVER_ID = #{fldServerId,jdbcType=VARCHAR},
+      FLD_RESULT_TIME = #{fldResultTime,jdbcType=TIMESTAMP},
+      FLD_UPLOAD_TIME = #{fldUploadTime,jdbcType=TIMESTAMP},
+      FLD_QR_COMTENT = #{fldQrComtent,jdbcType=LONGVARCHAR},
+      FLD_QR_COMTENT2 = #{fldQrComtent2,jdbcType=LONGVARCHAR},
+      FLD_MESSAGE = #{fldMessage,jdbcType=LONGVARBINARY}
+    where FLD_TRADE_NO = #{fldTradeNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.golong.bus.model.Tj_CodeScanbyBus">
+    update tb_tj_code_scanbybus_201710
+    set FLD_BUSID = #{fldBusid,jdbcType=VARCHAR},
+      FLD_BUSLINE = #{fldBusline,jdbcType=VARCHAR},
+      FLD_POSID = #{fldPosid,jdbcType=VARCHAR},
+      FLD_CITY_CODE = #{fldCityCode,jdbcType=VARCHAR},
+      FLD_DRIVERID = #{fldDriverid,jdbcType=VARCHAR},
+      FLD_TRADE_TIME = #{fldTradeTime,jdbcType=TIMESTAMP},
+      FLD_USER_NO = #{fldUserNo,jdbcType=VARCHAR},
+      FLD_PRICE = #{fldPrice,jdbcType=INTEGER},
+      FLD_AMOUNT = #{fldAmount,jdbcType=INTEGER},
+      FLD_BALANCE = #{fldBalance,jdbcType=INTEGER},
+      FLD_CONSUMPTION_TYPE = #{fldConsumptionType,jdbcType=INTEGER},
+      FLD_LON = #{fldLon,jdbcType=VARCHAR},
+      FLD_LAT = #{fldLat,jdbcType=VARCHAR},
+      FLD_COMPANY_ID = #{fldCompanyId,jdbcType=VARCHAR},
+      FLD_PUNCH_TIME = #{fldPunchTime,jdbcType=TIMESTAMP},
+      FLD_TRADE_INDEX = #{fldTradeIndex,jdbcType=INTEGER},
+      FLD_TRADE_TYPE = #{fldTradeType,jdbcType=INTEGER},
+      FLD_PROTYPE = #{fldProtype,jdbcType=VARCHAR},
+      FLD_UNITID = #{fldUnitid,jdbcType=VARCHAR},
+      FLD_BRANCHID = #{fldBranchid,jdbcType=VARCHAR},
+      FLD_ARRAYID = #{fldArrayid,jdbcType=VARCHAR},
+      FLD_STATIONID1 = #{fldStationid1,jdbcType=VARCHAR},
+      FLD_STATIONID2 = #{fldStationid2,jdbcType=VARCHAR},
+      FLD_MAC = #{fldMac,jdbcType=VARCHAR},
+      FLD_TAC = #{fldTac,jdbcType=VARCHAR},
+      FLD_TRADE_SQUE = #{fldTradeSque,jdbcType=VARCHAR},
+      FLD_MEMO = #{fldMemo,jdbcType=VARCHAR},
+      FLD_STATE = #{fldState,jdbcType=INTEGER},
+      FLD_SERVER_ID = #{fldServerId,jdbcType=VARCHAR},
+      FLD_RESULT_TIME = #{fldResultTime,jdbcType=TIMESTAMP},
+      FLD_UPLOAD_TIME = #{fldUploadTime,jdbcType=TIMESTAMP}
+    where FLD_TRADE_NO = #{fldTradeNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
