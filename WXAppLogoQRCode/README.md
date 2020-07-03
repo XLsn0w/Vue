@@ -1,4 +1,3 @@
-![LogoQRCode.png](https://github.com/XLsn0w/WeChatMiniProgramLogoQRCode/blob/master/LogoQRCode.png?raw=true)
 
 ```
   onLoad: function (options) {
@@ -13,9 +12,6 @@
     QRCodeJS.qrApi.draw('https://github.com/xlsn0w', "logoQRCode", 275, 275, null, '/images/xlsn0w.png');
   }
 ```
-
-# 代码
-![code](https://github.com/XLsn0w/WeChatMiniProgramLogoQRCode/blob/master/code.png?raw=true)
 
 ```
 var drawImg = function (src, width,ctx) {
@@ -126,4 +122,3 @@ var drawImg = function (src, width,ctx) {
     }
   }
 ```
-![WeChatMiniProgramLogoQRCode.png](https://github.com/XLsn0w/WeChatMiniProgramLogoQRCode/blob/master/WeChatMiniProgramLogoQRCode.png?raw=true)
