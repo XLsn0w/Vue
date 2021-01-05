@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "koa": "^2.5.0",
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.13",
