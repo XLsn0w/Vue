@@ -24,7 +24,7 @@
         "babel-eslint": "^10.0.1",
         "babylon": "^6.18.0",
         "base64-arraybuffer": "^0.2.0",
-        "browserslist": "^4.4.2",
+        "browserslist": "^4.16.5",
         "caniuse-lite": "^1.0.30000940",
         "chai": "^4.1.2",
         "cross-env": "^5.2.0",
